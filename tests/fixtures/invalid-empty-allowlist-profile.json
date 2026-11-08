@@ -1,0 +1,7 @@
+{
+  "organization": "contoso",
+  "project": "delivery",
+  "allowedToolCategories": [],
+  "credentialReference": "interactive-identity",
+  "reportDestinations": []
+}

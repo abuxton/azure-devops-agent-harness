@@ -1,0 +1,12 @@
+.agents/skills/
+.vscode/mcp.json
+config/profiles.local.json
+reports/*
+!reports/.gitkeep
+tmp/*
+!tmp/.gitkeep
+audit/*
+!audit/.gitkeep
+.env
+.env.*
+!.env.example

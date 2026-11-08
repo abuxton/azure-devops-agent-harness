@@ -1,0 +1,27 @@
+{
+  "profiles": {
+    "example-readonly": {
+      "organization": "{organization}",
+      "project": "{project}",
+      "allowedToolCategories": [
+        "core",
+        "work",
+        "work-items",
+        "pipelines"
+      ],
+      "credentialReference": "interactive-identity",
+      "reportDestinations": []
+    },
+    "example-write": {
+      "organization": "{organization}",
+      "project": "{project}",
+      "allowedToolCategories": [
+        "work-items"
+      ],
+      "credentialReference": "approved-write-identity",
+      "reportDestinations": [
+        "azure-devops-wiki"
+      ]
+    }
+  }
+}
