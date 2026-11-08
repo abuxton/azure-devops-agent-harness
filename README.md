@@ -23,6 +23,8 @@ In Windows PowerShell, explicitly run:
 
 See [onboarding](instructions/onboarding.md), [MCP configuration](instructions/azure-devops-mcp.md), and [skill deployment](instructions/skills.md).
 
+`Initialize-Harness.ps1` checks for Git and VS Code first. If either is missing, it uses Windows Package Manager (`winget`) with fixed package identifiers, verifies the executable, then creates local configuration. If `winget` is unavailable or the new executable is not visible, it stops without creating local configuration; install or enable `winget`, open a new PowerShell terminal if needed, and run the script again.
+
 ## Supported environment
 
 - Windows desktop with VS Code

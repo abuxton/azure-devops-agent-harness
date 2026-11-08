@@ -59,6 +59,32 @@ if ($profileExample -notmatch '"organization": "\{organization\}"' -or $profileE
     Add-Failure 'The profile example must contain organization and project placeholders.'
 }
 
+$bootstrapScript = Get-Content -LiteralPath (Join-Path $repositoryRoot 'scripts\Initialize-Harness.ps1') -Raw
+foreach ($requiredBootstrapText in @(
+    'Git.Git',
+    'Microsoft.VisualStudioCode',
+    '--exact',
+    '--source winget',
+    '--accept-package-agreements',
+    '--accept-source-agreements',
+    'Install-Prerequisite',
+    'Find-Executable'
+)) {
+    if ($bootstrapScript -notmatch [regex]::Escape($requiredBootstrapText)) {
+        Add-Failure "Missing prerequisite bootstrap behavior: $requiredBootstrapText"
+    }
+}
+foreach ($prohibitedBootstrapText in @(
+    'Invoke-WebRequest',
+    'Start-BitsTransfer',
+    'Set-ExecutionPolicy',
+    'Start-Process.*-Verb RunAs'
+)) {
+    if ($bootstrapScript -match $prohibitedBootstrapText) {
+        Add-Failure "Prohibited prerequisite bootstrap behavior: $prohibitedBootstrapText"
+    }
+}
+
 $vscodeDirectory = Join-Path $repositoryRoot '.vscode'
 if (Test-Path -LiteralPath $vscodeDirectory) {
     $vscodeContent = Get-ChildItem -LiteralPath $vscodeDirectory -File |

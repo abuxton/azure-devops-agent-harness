@@ -1,0 +1,41 @@
+{
+  "scenarios": [
+    {
+      "name": "installed-prerequisites",
+      "gitAvailable": true,
+      "codeAvailable": true,
+      "wingetAvailable": true,
+      "expectedWingetPackages": []
+    },
+    {
+      "name": "missing-git",
+      "gitAvailable": false,
+      "codeAvailable": true,
+      "wingetAvailable": true,
+      "expectedWingetPackages": ["Git.Git"]
+    },
+    {
+      "name": "winget-unavailable",
+      "gitAvailable": false,
+      "codeAvailable": true,
+      "wingetAvailable": false,
+      "expectedFailure": "winget unavailable"
+    },
+    {
+      "name": "winget-installation-failure",
+      "gitAvailable": false,
+      "codeAvailable": true,
+      "wingetAvailable": true,
+      "wingetExitCode": 1,
+      "expectedFailure": "winget installation failure"
+    },
+    {
+      "name": "post-install-verification-failure",
+      "gitAvailable": false,
+      "codeAvailable": true,
+      "wingetAvailable": true,
+      "postInstallGitAvailable": false,
+      "expectedFailure": "executable unavailable"
+    }
+  ]
+}
