@@ -1,0 +1,7 @@
+{
+  "organization": "contoso",
+  "project": "delivery",
+  "allowedToolCategories": ["work-items"],
+  "credentialReference": "approved-write-identity",
+  "reportDestinations": ["azure-devops-wiki"]
+}

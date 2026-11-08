@@ -1,0 +1,7 @@
+{
+  "organization": "{organization}",
+  "project": "{project}",
+  "allowedToolCategories": ["work-items"],
+  "credentialReference": "interactive-identity",
+  "reportDestinations": []
+}
